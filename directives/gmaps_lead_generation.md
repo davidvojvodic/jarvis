@@ -94,6 +94,7 @@ apify-client
 httpx
 html2text
 anthropic
+duckduckgo-search
 gspread
 google-auth
 google-auth-oauthlib
@@ -142,7 +143,7 @@ python-dotenv
 - ~10-15% of business websites return 403/503 errors - this is normal
 - Facebook URLs always fail with 400 errors (blocks scrapers)
 - Some sites have broken DNS - handled gracefully as errors
-- DuckDuckGo HTML search is free and doesn't block (unlike Google)
+- DuckDuckGo enrichment uses `duckduckgo_search` library (reliable) instead of HTML scraping (fragile)
 - `stringify_value()` helper needed because Claude sometimes returns dicts instead of strings
 - Deduplication by lead_id prevents re-adding existing businesses across runs
 - 50 leads takes ~3-4 minutes with 3 workers

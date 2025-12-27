@@ -143,6 +143,26 @@ def extract_with_claude(text_content: str, business_name: str) -> dict:
         print(f"Claude Extraction Error: {e}")
         return {}
 
+
+from duckduckgo_search import DDGS
+
+def perform_duckduckgo_search(query: str) -> str:
+    """
+    Perform a simple DuckDuckGo Text search to find additional context.
+    Returns: First relevant result URL or None.
+    """
+    try:
+        # Use simple text search from the library
+        results = DDGS().text(query, max_results=1)
+        if results:
+            first = results[0]
+            link = first.get("href")
+            print(f"  👉 DDG found: {link}")
+            return link
+    except Exception as e:
+        print(f"  ⚠️ DDG Search Error: {e}")
+    return None
+
 def clean_html_to_text(html: str) -> str:
     """Simple HTML to text cleaner."""
     # Remove scripts and styles
@@ -233,6 +253,26 @@ def scrape_website_contacts(url: str, business_name: str = None) -> dict:
                             
             except Exception as e:
                 result["error"] = f"Network error: {str(e)}"
+
+        # 1.5. DuckDuckGo Enrichment (If business name provided)
+        if business_name:
+            try:
+                print(f"  🔎 Searching DDG for: '{business_name} owner email'")
+                ddg_url = perform_duckduckgo_search(f"{business_name} owner email contact")
+                if ddg_url and parsed_url.netloc not in ddg_url: # Don't re-scrape own site
+                    print(f"  👉 Found external profile: {ddg_url}")
+                    with httpx.Client(timeout=10.0, headers=headers, follow_redirects=True) as client:
+                        resp = client.get(ddg_url)
+                        if resp.status_code == 200:
+                            result["_search_enriched"] = True
+                            ddg_html = resp.text
+                            # Brief regex check
+                            result["emails"].extend(extract_emails(ddg_html))
+                            result["social_media"].update(extract_social_media(ddg_html, ddg_url))
+                            
+                            full_text_content += f"\n--- EXTERNAL SEARCH ({ddg_url}) ---\n{clean_html_to_text(ddg_html)}"
+            except Exception as e:
+                print(f"  ⚠️ Enrichment failed: {e}")
 
         # 2. AI Extraction (The "Ultrathink")
         if full_text_content and business_name:

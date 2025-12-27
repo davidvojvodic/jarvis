@@ -16,10 +16,9 @@ This section details **every single file** in the codebase, categorized by its f
 | File | Purpose |
 | :--- | :--- |
 
-| `gmaps_lead_generation.md` | **[ACTIVE]** SOP for Local Business leads (Google Maps). |
-| `apify_leads_finder.md` | **[NEW]** SOP for People/Niche leads (B2B Finder). |
-| `scrape_leads.md` | SOP for generic/bulk scraping (Legacy). |
-| `google_serp_lead_scraper.md` | Documentation for the n8n-based Google Search Results scraper (searches for "plumbers in X"). |
+| `gmaps_lead_generation.md` | **[ACTIVE - METHOD 1]** SOP for Local Business leads (Google Maps). Best for bulk. |
+| `scrape_leads.md` | **[ACTIVE - METHOD 2]** SOP for People/Niche leads (B2B Finder). Best for specific roles. |
+
 | `instantly_autoreply.md` | SOP for handling cold email replies automatically using AI. |
 | `create_proposal.md` | SOP for generating PandaDoc sales proposals from client data. |
 | `upwork_scrape_apply.md` | SOP for the Upwork automation loop (Find Job -> Write Proposal). |
@@ -38,7 +37,7 @@ This section details **every single file** in the codebase, categorized by its f
 | `scrape_apify_parallel.py` | Parallelized generic Apify scraper for large jobs. |
 | `enrich_emails.py` | Uses Anymail Finder/Hunter to find emails for a list of domains. |
 | `extract_website_contacts.py` | **[CLAUDE 4.5]** Uses Claude 4.5 Sonnet to deep-read websites and find Owner/Team info. |
-| `find_b2b_leads.py` | **[NEW]** Uses Apify `leads-finder` to find people by Job Title/Niche. |
+
 #### ⚡ Cold Outreach
 | File | Purpose |
 | :--- | :--- |
