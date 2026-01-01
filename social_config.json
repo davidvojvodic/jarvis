@@ -1,0 +1,20 @@
+{
+    "niche": "Lead Generation for B2B",
+    "target_audience": "Sales Directors, Agency Owners, Founder-led Sales teams",
+    "content_pillars": [
+        "Cold Outreach Strategies",
+        "Lead Scraping & Enrichment",
+        "Automated Follow-ups",
+        "CRM Integration",
+        "AI in Sales"
+    ],
+    "platforms": [
+        "Instagram",
+        "Facebook"
+    ],
+    "tone": "Professional yet Engaging, Visual-First, Action-Oriented",
+    "posting_schedule": {
+        "frequency": "daily",
+        "time": "09:00"
+    }
+}

@@ -1,0 +1,42 @@
+# Flowko Brand Bible
+
+**1. Brand Voice & Tone:**
+
+*   **Expert Guide:** Technical excellence with approachable communication.
+*   **ROI-Focused:** Practical, data-driven, emphasizing time and cost savings.
+*   **Innovation Partner:** Forward-thinking, showcasing cutting-edge AI applications in a business context.
+*   Professional, clear, and concise.
+
+**2. Visual Style:**
+
+*   Not explicitly defined in the provided snippets. However, the emphasis on data and ROI suggests a clean, modern aesthetic.
+*   Imagery should convey efficiency, automation, and tangible results.
+*   Mood: Confident, trustworthy, and innovative.
+
+**3. Core Values/Mission:**
+
+*   **Mission:** Empower European SMBs with intelligent workflow automation that eliminates repetitive tasks, reduces costs, and unlocks capacity for growth and innovation.
+*   **Vision:** Become Europe's most trusted n8n automation partner, helping organizations reclaim time through AI-powered workflows.
+*   **Core Values:**
+    *   Technical Excellence
+    *   ROI-Driven Solutions
+    *   Innovation
+    *   Customer-First Approach
+    *   Local Expertise
+
+**4. Do's and Don'ts:**
+
+*   **Do:**
+    *   Focus on quantifiable results (time saved, cost reduction).
+    *   Communicate technical concepts in an accessible manner.
+    *   Highlight the practical applications of AI.
+    *   Emphasize local expertise and customer-centric service.
+    *   Maintain GDPR and EU data law compliance.
+    *   Use case studies with ROI to demonstrate value.
+    *   Offer ROI guarantees.
+*   **Don't:**
+    *   Use overly technical jargon without explanation.
+    *   Overpromise or exaggerate AI capabilities.
+    *   Neglect data privacy and ethical considerations.
+    *   Lose sight of the customer's specific needs and goals.
+    *   Forget to track and report on ROI.
