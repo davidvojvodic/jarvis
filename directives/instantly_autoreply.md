@@ -32,13 +32,18 @@ If more context is needed, call `instantly_get_emails` with the lead_email to re
 ### Step 3: Extract Campaign ID
 Parse the campaign_name to get the ID (everything before the "|"). Or use `campaign_id` directly if available.
 
-### Step 4: Lookup Knowledge Base
+### Step 4: Lookup Knowledge Base (Campaign Specific)
 Call `read_sheet` on spreadsheet `1QS7MYDm6RUTzzTWoMfX-0G9NzT5EoE2KiCE7iR1DBLM` to find the row where column "ID" matches the campaign ID. Extract:
 - `Knowledge Base`: Campaign-specific context and talking points
 - `Reply Examples`: Example replies to match tone
 
-### Step 5: Skip if No Knowledge Base
-If no knowledge base found for this campaign, skip processing and return empty.
+### Step 5: Consult RAG Agent (General Knowledge)
+If the query requires general company info (pricing, other services, tech stack) not in the campaign sheet:
+- Use the `flowko-knowledge` MCP: `search_flowko_knowledge(query="...")`
+- Combine this general knowledge with the campaign-specific context.
+
+### Step 6: Skip if No Knowledge Base
+If no knowledge base found for this campaign AND no relevant info from RAG, skip processing and return empty.
 
 ### Step 6: Generate Reply
 Using extended thinking, generate a reply following these rules:

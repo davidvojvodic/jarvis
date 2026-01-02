@@ -37,9 +37,11 @@ python execution/social_orchestrator.py
 
 ### Option 1: Plan New Content
 1. Reads `social_config.json` for themes/pillars
-2. Uses **Gemini 3 Flash Preview** to propose 7-day plan (with Visual Prompts)
-3. **Interactive**: Displays plan → You approve (y) or reject (n)
-4. Saves to Sheet as `Status="Pending"` + Auto-formats columns
+2. **Research**: Uses `flowko-knowledge` MCP to find trending internal topics/case studies.
+   - Query: "Recent case studies", "Core value propositions", "Client success stories"
+3. Uses **Gemini 3 Flash Preview** to propose 7-day plan (with Visual Prompts)
+4. **Interactive**: Displays plan → You approve (y) or reject (n)
+5. Saves to Sheet as `Status="Pending"` + Auto-formats columns
 
 ### Option 2: Generate Assets
 1. Scans Sheet for `Status="Pending"` rows

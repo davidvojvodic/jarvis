@@ -45,6 +45,13 @@ description: Create a PandaDoc proposal for a client
        - **Keywords:** Key terms they use to describe their own value.
        - **Recent Context:** Any recent news or specific focus areas mentioned on the site.
    - **Output:** A brief "Client Research Summary" to be used in the next step.
+   
+1c. **Consult Internal Knowledge (RAG)**
+   - **Goal:** Align proposal with verified company pricing, services, and case studies.
+   - **Action:**
+     - Query the `flowko-knowledge` MCP using `search_flowko_knowledge`.
+     - Queries: "Standard pricing for [Service]", "Case studies for [Industry]", "Implementation timeline for [Project Type]".
+   - **Output:** "Internal Context" block to guide generation.
 
 2. **Generate Content**
    - Using the gathered information **and the Client Research Summary (if available)**, generate the following expanded content:
