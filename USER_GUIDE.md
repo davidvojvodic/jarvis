@@ -650,6 +650,33 @@ python execution/jump_cut_vad_singlepass.py input.mp4 output.mp4 --detect-restar
 
 ---
 
+## 🧠 8. RAG Agent & Knowledge Base
+
+> **Goal**: Chat with your internal business knowledge (Notion, docs) via the AI Agent.
+
+### 🚀 Capabilities
+The RAG (Retrieval Augmented Generation) Agent has direct access to your company's knowledge base. It can semantic search your documents to answer questions about:
+- Pricing and Services
+- Internal Processes
+- Business Strategies
+- Past Projects
+
+### 💬 Example Prompts
+```
+"What AI services do we offer at Flowko?"
+"Summarize our pricing strategy for B2B leads."
+"How do we handle client onboarding?"
+"Find documents about 'automation workflows'."
+```
+
+### 🔧 How It Works
+1. **Knowledge Source**: Notion documents (synced via n8n).
+2. **Vector DB**: Supabase `knowledge_documents` table with `pgvector`.
+3. **Connection**: `flowko-knowledge` MCP server.
+4. **Action**: The Agent calls `search_flowko_knowledge` to find relevant chunks before answering.
+
+---
+
 ## 🛠️ Utility Commands
 
 Quick commands for maintenance:

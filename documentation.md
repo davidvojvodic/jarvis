@@ -816,6 +816,82 @@ input.mp4
 
 ---
 
+# 🧠 8. Flowko Knowledge MCP (RAG)
+
+## 🚀 Quick Start
+This system runs **in the background** as an MCP Server.
+To use it, simply chat with the Agent:
+> "What AI services do we offer?"
+> "Find documents about pricing."
+
+## 📊 System Overview
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                     MCP Client (Antigravity)                    │
+│                        (User Chat Interface)                    │
+│                                │                                │
+│                        JSON-RPC over Stdio                      │
+│                                ▼                                │
+│                     flowko-knowledge (Server)                   │
+│                    (Node.js / TypeScript)                       │
+└────────────────────────────────┬────────────────────────────────┘
+                                 │
+        ┌────────────────────────┼────────────────────────┐
+        ▼                        ▼                        ▼
+   Step 1: Embed           Step 2: Search           Step 3: Return
+  Query (Voyage AI)      Vector Match (Supabase)     Chunks to Agent
+        │                        │                        │
+        ▼                        ▼                        ▼
+  Voyage 3 Large           Pgvector Index          Context for LLM
+```
+
+## 📁 File Reference
+
+### 🎯 Core Files
+| File | Location | Purpose |
+|------|----------|---------|
+| `index.ts` | `mcp-servers/flowko-knowledge/src/` | Main server logic |
+| `mcp_config.json` | `.gemini/antigravity/` | Configuration & Keys |
+| `debug.log` | `mcp-servers/flowko-knowledge/` | Server logs (file only) |
+
+## ⚙️ Configuration
+
+**Cross-Platform Setup (Windows/Mac)**
+Instead of editing paths manually, run this script to automatically configure the MCP server for your current machine:
+
+```bash
+python execution/setup_local_mcps.py
+```
+
+This script will:
+1. Detect your OS.
+2. Find your `mcp_config.json`.
+3. Inject the correct absolute paths and API keys.
+
+**Manual Config (Reference)**
+If you prefer to edit manually (e.g., `~/.config/Claude/claude_desktop_config.json`):
+
+```json
+"flowko-knowledge": {
+  "command": "node",
+  "args": ["/absolute/path/to/jarvis/mcp-servers/flowko-knowledge/dist/index.js"],
+  "cwd": "/absolute/path/to/jarvis/mcp-servers/flowko-knowledge",
+  "env": {
+    "SUPABASE_URL": "...",
+    "SUPABASE_SERVICE_KEY": "...",
+    "VOYAGE_API_KEY": "..."
+  }
+}
+```
+
+## 🤖 AI Models
+| Task | Model | Provider |
+|------|-------|----------|
+| Embeddings | **voyage-3-large** | Voyage AI |
+| Generation | **Gemini/Claude** | (The Agent itself) |
+
+---
+
 # 📋 Master AI Model Reference
 
 | Model | Used By | Purpose |
